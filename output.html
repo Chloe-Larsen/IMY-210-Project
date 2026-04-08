@@ -1,0 +1,48 @@
+<html><head><title>Schedule</title><meta charset="UTF-8"><style>
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+                        /* Forces consistent column sizing */
+                        table-layout: fixed;
+                    }
+                    th, td {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                        /* Prevents text from pushing the column wider */
+                        word-wrap: break-word;
+                    }
+                    /* Specific column widths */
+                    th:first-child, td:first-child {
+                        width: 100px; /* Narrower column for Time */
+                    }
+                    th:not(:first-child) {
+                        width: auto; /* Distributes the 5 days equally */
+                    }
+                    .container {
+                        padding: 20px;
+                    }
+                    header {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .event {
+                        margin-bottom: 8px;
+                        padding: 5px;
+                        background: #f0f0f0;
+                        border-radius: 5px;
+                    }
+                    .event.Lectures {
+                        background: #e3f2fd;
+                        border-left: 4px solid #7cbff6;
+                    }
+                    .event.Tutorials {
+                        background: #e8f5e9;
+                        border-left: 4px solid #81b783;
+                    }
+                    .event.Practicals {
+                        background: #fff3e0;
+                        border-left: 4px solid #fcd397;
+                    }
+                </style></head><body><div class="container"><header><h1>Timetable</h1></header><div class="course-section"><h2 style="margin-bottom: 20px;">Weekly (All Courses)</h2><div class="week-view"><h3>Course Schedule by Day</h3><table class="week-table"><thead><tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead><tbody><tr><td>07:30 - 08:20</td><td/><td/><td><div class="event Lectures"><strong>COS 221</strong><br/>Lecture<br/>IT<br/>2-26</div></td><td/><td/></tr><tr><td>08:30 - 09:20</td><td><div class="event Lectures"><strong>COS 216</strong><br/>Lecture<br/>IT<br/>2-23</div></td><td/><td><div class="event Lectures"><strong>COS 210</strong><br/>Lecture<br/>IT<br/>2-26</div></td><td><div class="event Practicals"><strong>IMY 210</strong><br/>Practical<br/>Informatorium<br/>Yellow Lab</div></td><td><div class="event Lectures"><strong>IMY 210</strong><br/>Lecture<br/>IT<br/>4-2</div></td></tr><tr><td>09:30 - 10:20</td><td><div class="event Lectures"><strong>COS 221</strong><br/>Lecture<br/>IT<br/>2-26</div></td><td><div class="event Practicals"><strong>COS 212</strong><br/>Practical<br/>Informatorium<br/>Purple Lab</div></td><td><div class="event Lectures"><strong>COS 212</strong><br/>Lecture<br/>Chancellor's Building<br/>Louw hall</div></td><td><div class="event Lectures"><strong>COS 216</strong><br/>Lecture<br/>IT<br/>4-4</div></td><td><div class="event Tutorials"><strong>COS 212</strong><br/>Tutorial<br/>Chancellor's Building<br/>Louw hall</div></td></tr><tr><td>10:30 - 11:20</td><td/><td><div class="event Practicals"><strong>COS 212</strong><br/>Practical<br/>Informatorium<br/>Purple Lab</div></td><td><div class="event Lectures"><strong>COS 216</strong><br/>Lecture<br/>IT<br/>4-4</div></td><td/><td><div class="event Lectures"><strong>COS 221</strong><br/>Lecture<br/>IT<br/>4-4</div></td></tr><tr><td>11:30 - 12:20</td><td><div class="event Lectures"><strong>COS 210</strong><br/>Lecture<br/>IT<br/>2-26</div></td><td><div class="event Practicals"><strong>COS 212</strong><br/>Practical<br/>Informatorium<br/>Purple Lab</div></td><td><div class="event Practicals"><strong>COS 221</strong><br/>Practical<br/>Informatorium<br/>Blue Lab</div></td><td><div class="event Lectures"><strong>COS 221</strong><br/>Lecture<br/>IT<br/>4-4</div></td><td/></tr><tr><td>12:30 - 13:20</td><td><div class="event Lectures"><strong>INF 272</strong><br/>Lecture<br/>IT<br/>4-4</div></td><td><div class="event Lectures"><strong>COS 216</strong><br/>Lecture<br/>IT<br/>4-4</div></td><td><div class="event Practicals"><strong>COS 221</strong><br/>Practical<br/>Informatorium<br/>Blue Lab</div></td><td/><td/></tr><tr><td>13:30 - 14:20</td><td><div class="event Practicals"><strong>COS 216</strong><br/>Practical<br/>Informatorium<br/>Maroon Lab</div></td><td/><td><div class="event Practicals"><strong>COS 221</strong><br/>Practical<br/>Informatorium<br/>Blue Lab</div></td><td/><td/></tr><tr><td>14:30 - 15:20</td><td><div class="event Practicals"><strong>COS 216</strong><br/>Practical<br/>Informatorium<br/>Maroon Lab</div></td><td><div class="event Practicals"><strong>INF 272</strong><br/>Practical<br/>Informatorium<br/>Brown Lab</div></td><td><div class="event Lectures"><strong>IMY 210</strong><br/>Lecture<br/>IT<br/>4-2</div></td><td/><td><div class="event Tutorials"><strong>COS 210</strong><br/>Tutorial<br/>IT<br/>2-26</div></td></tr><tr><td>15:30 - 16:20</td><td><div class="event Practicals"><strong>COS 216</strong><br/>Practical<br/>Informatorium<br/>Maroon Lab</div></td><td><div class="event Practicals"><strong>INF 272</strong><br/>Practical<br/>Informatorium<br/>Brown Lab</div></td><td/><td/><td/></tr><tr><td>16:30 - 17:20</td><td><div class="event Lectures"><strong>COS 212</strong><br/>Lecture<br/>Chemistry Building<br/>Large Chemistry Hall</div></td><td/><td/><td><div class="event Lectures"><strong>COS 212</strong><br/>Lecture<br/>Chancellor's Building<br/>Roos hall</div></td><td/></tr></tbody></table></div></div></div></body></html>

@@ -1,0 +1,100 @@
+<!--Larsen u25004141-->
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="schedule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="COS210" type="course" minOccurs="0"/>
+                <xs:element name="COS212" type="course" minOccurs="0"/>
+                <xs:element name="COS216" type="course" minOccurs="0"/>
+                <xs:element name="COS221" type="course" minOccurs="0"/>
+                <xs:element name="INF272" type="course" minOccurs="0"/>
+                <xs:element name="IMY210" type="course" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="course">
+        <xs:sequence>
+            <xs:element name="Code" type="CourseCodeType"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Semester" type="SemesterType"/>
+            <xs:element name="Lectures" type="LecturesType"/>
+            <xs:element name="Tutorials" type="TutorialsType" minOccurs="0"/>
+            <xs:element name="Practicals" type="PracticalsType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CourseCodeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3} [0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SemesterType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="S1"/>
+            <xs:enumeration value="Y"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="LecturesType">
+        <xs:sequence>
+            <xs:element name="L1" type="SessionType"/>
+            <xs:element name="L2" type="SessionType" minOccurs="0"/>
+            <xs:element name="L3" type="SessionType" minOccurs="0"/>
+            <xs:element name="L4" type="SessionType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TutorialsType">
+        <xs:sequence>
+            <xs:element name="T1" type="SessionType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PracticalsType">
+        <xs:sequence>
+            <xs:element name="P1" type="SessionType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SessionType">
+        <xs:sequence>
+            <xs:element name="Day" type="DayType"/>
+            <xs:element name="Time" type="TimeType"/>
+            <xs:element name="Venue" type="VenueType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="DayType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Monday"/>
+            <xs:enumeration value="Tuesday"/>
+            <xs:enumeration value="Wednesday"/>
+            <xs:enumeration value="Thursday"/>
+            <xs:enumeration value="Friday"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TimeType">
+        <xs:sequence>
+            <xs:element name="StartTime" type="Time"/>
+            <xs:element name="EndTime" type="Time"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Time">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([01][0-9]|2[0-3]):[0-5][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="VenueType">
+        <xs:sequence>
+            <xs:element name="Campus" type="xs:string"/>
+            <xs:element name="Building" type="xs:string"/>
+            <xs:element name="Room" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
