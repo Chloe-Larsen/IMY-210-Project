@@ -13,6 +13,8 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.9.9",
     "express": "^5.2.1",
+    "libxmljs2": "^0.37.0",
+    "multer": "^2.1.1",
     "xml-js": "^1.6.11",
     "xslt-processor": "^5.0.7"
   }
