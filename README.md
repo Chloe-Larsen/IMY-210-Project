@@ -11,13 +11,13 @@ To run this server locally, ensure you have the following installed:
 - Apache FOP (Configured locally. Note: Ensure the fopPath variable in server.js points to your local fop.bat file, currently set to C:\fop-2.11\fop\fop.bat).
 
 ## Instructions to run backend
-- Extract the project_mini2_u25004141.zip file.
+- Extract the `project_mini2_u25004141.zip` file.
 - Open a terminal in the root directory of the project.
 - Install the required Node.js dependencies:
-    -`npm install express multer libxmljs2 xslt-processor`
+    - `npm install express multer libxmljs2 xslt-processor`
 - Ensure the fopPath variable is updated to match your local FOP path to where your FOP.bat is stored
 - Start the server
-    -`node server.js`
+    - `node server.js`
 - The server will initialize and create the necessary uploads/ directory automatically.
 
 ## Instructions to run Vue frontend
@@ -26,24 +26,37 @@ No Vue front end has been developed for this hand in
 ## Explanation of CRUD endpoints
 ### Create:
 **POST `/upload/file`**
+
 ***Description:*** Uploads utility files (XSD schemas and XSLT stylesheets) to the `uploads/` directory.
+
 ***Body:*** form-data -> Key: `file` (File type).
+
 ---
 **POST `/upload/xml`**
 
 ***Description:*** Uploads an XML file and strictly validates it against `schedule.xsd` (which must be uploaded first). If validation fails, the file is rejected and immediately deleted.
+
 ***Body:*** form-data -> Key: `xmlFile` (File type).
 ### Read:
+
 **GET `/files`**
+
 ***Description:*** Returns a JSON array of all files currently stored in the `uploads/` directory.
 ### Update:
+
 **PUT `/files/:name`**
+
 ***Description:*** Overwrites an existing file in the `uploads/` directory with a new version.
+
 ***URL Parameter:*** `:name` (e.g., schedule.xml).
+
 ***Body:*** form-data -> Key: `file` (File type).
 ### Delete:
+
 **DELETE `/files/:name`**
+
 ***Description:*** Overwrites an existing file in the `uploads/` directory with a new version.
+
 ***URL Parameter:*** `:name` (e.g., schedule.xml).
 
 ## Explanation of transformation workflow
