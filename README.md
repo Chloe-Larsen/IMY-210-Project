@@ -63,9 +63,11 @@ No Vue front end has been developed for this hand in
 Once the files (schedule.xsd, schedule-to-html.xsl, schedule-to-pdf.xsl, and your XML data files) are successfully uploaded via the POST routes, you can view the transformed schedules directly in your web browser. 
 ### HTML Transformation 
 ***Semester 1***: http://localhost:3000/htmlS1
+
 ***Semester 2***: http://localhost:3000/htmlS2
 **Workflow:** The server reads the XML and XSLT files and uses the xslt-processor package to render a dynamic HTML table. Semester 1 will only display if `schedule_semester1.xml` is uploaded and semester 2 will only work if `schedule_semester2.xml` is uploaded
 ### PDF Transformation 
 ***Semester 1***: http://localhost:3000/pdfS1
+
 ***Semester 2***: http://localhost:3000/pdfS2
 **Workflow:** The server executes an external command to Apache FOP, transforming the XML data into an XSL-FO structured document, which is then compiled into a downloadable PDF file. Semester 1 will only display if `schedule_semester1.xml` is uploaded and semester 2 will only work if `schedule_semester2.xml` is uploaded
