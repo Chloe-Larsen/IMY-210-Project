@@ -1,4 +1,4 @@
-# IMY 210 Project Mini hand in 2##
+# IMY 210 Project Mini Hand In 2
 ## Author: Chloe Larsen (u25004141)
 
 ## Project description
