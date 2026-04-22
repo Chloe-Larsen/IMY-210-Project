@@ -16,6 +16,7 @@ To run this server locally, ensure you have the following installed:
 - Install the required Node.js dependencies:
     - `npm install express multer libxmljs2 xslt-processor`
 - Ensure the fopPath variable is updated to match your local FOP path to where your FOP.bat is stored
+    - If FOP is not installed download the ZIP file at `https://xmlgraphics.apache.org/fop/download.html`
 - Start the server
     - `node server.js`
 - The server will initialize and create the necessary uploads/ directory automatically.
