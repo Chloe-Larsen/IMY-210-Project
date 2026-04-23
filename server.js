@@ -115,7 +115,7 @@ app.get('/pdfS1', async (req, res) => {//Semester 1
             return res.status(500).send("Error generating PDF. Make sure Apache FOP is installed and in your PATH.");
         }
                 
-        const pdfPath = path.join(__dirname, 'output.pdf');
+        const pdfPath = path.join(__dirname, 'semester1.pdf');
         res.sendFile(pdfPath, (err) => {
             if (err) {
                 console.error("Error sending PDF:", err);
@@ -141,7 +141,7 @@ app.get('/pdfS2', async (req, res) => {//Semester 2
             return res.status(500).send("Error generating PDF. Make sure Apache FOP is installed and in your PATH.");
         }
                 
-        const pdfPath = path.join(__dirname, 'output.pdf');
+        const pdfPath = path.join(__dirname, 'semester2.pdf');
         res.sendFile(pdfPath, (err) => {
             if (err) {
                 console.error("Error sending PDF:", err);
