@@ -1,11 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { ref , onMounted} from 'vue';
 
 const xmlFile = ref(null);
-const generateFile = ref(null);
+const generalFile = ref(null);
 const message = ref('');
-const isError = ref(false);
+const isError = ref(false);git 
 const isLoading = ref(false);
+const isXsdUploaded = ref(false);
+
+onMounted(async () => {
+  try {
+    const res = await fetch('http://localhost:3000/files');
+    const data = await res.json();
+    if (data.files.includes('schedule.xsd')) {
+      isXsdUploaded.value = true;
+    }
+  } catch (err) {
+    console.warn("Could not fetch existing files.");
+  }
+});
 
 const handleFileChange = (event, type) => {
   if (type === 'xml') xmlFile.value = event.target.files[0];
@@ -21,9 +34,10 @@ const uploadXml = async () => {
 
 const uploadFile = async () => {
   if (!generalFile.value) return;
+  const isXsd = generalFile.value.name.endsWith('.xsd');
   const formData = new FormData();
   formData.append('file', generalFile.value);
-  await executeUpload('http://localhost:3000/upload/file', formData);
+  await executeUpload('http://localhost:3000/upload/file', formData, isXsd);
 };
 
 const executeUpload = async (url, formData) => {
@@ -35,6 +49,9 @@ const executeUpload = async (url, formData) => {
     if (!response.ok) throw new Error(data.message || 'Upload failed');
     message.value = "Success: " + (data.message || "File uploaded");
     isError.value = false;
+    if (isXsd) {
+      isXsdUploaded.value = true;
+    }
   } catch (error) {
     message.value = "Error: " + error.message;
     isError.value = true;
@@ -53,10 +70,16 @@ const executeUpload = async (url, formData) => {
         <button @click="uploadFile" :disabled="isLoading">Upload File</button>
     </div>
 
-    <div class="upload-section">
+    <div class="upload-section" v-if="isXsdUploaded">
         <h3>Upload XML (with XSD validation)</h3>
         <input type="file" @change="handleFileChange($event, 'xml')" accept=".xml" />
         <button @click="uploadXml" :disabled="isLoading">Upload XML</button>
+    </div>
+
+    <div class="upload-section" v-else>
+      <p style="color: #666; font-style: italic;">
+        Upload your XSD schema file first to unlock XML uploading.
+      </p>
     </div>
 
     <p v-if="message" :class="{'error': isError}">{{ message }}</p>
