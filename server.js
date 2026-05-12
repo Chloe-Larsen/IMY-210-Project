@@ -43,38 +43,11 @@ function validateXML(xmlString, xsdString) {
 }
 
 //View schedule in html
-app.get('/htmlS1', async (req, res) => {//Semester 1
+app.get('/transform', async (req, res) => {//Semester 1
     try {
-        const xmlPath = path.join(path.join(storageDir, 'schedule_semester1.xml'));
-        const xsltPath = path.join(path.join(storageDir, 'schedule-to-html.xsl'));
-
-        if (!fs.existsSync(xmlPath) || !fs.existsSync(xsltPath)) {
-            return res.status(404).send("Required XML/XSLT files missing in 'uploads' folder.");
-        }
-
-        const xmlString = fs.readFileSync(xmlPath, 'utf8');
-        const xsltString = fs.readFileSync(xsltPath, 'utf8');
-
-        const xslt = new Xslt();
-        const xmlParser = new XmlParser();
-        const xmlDoc = xmlParser.xmlParse(xmlString);
-        const xsltDoc = xmlParser.xmlParse(xsltString);
-
-        const htmlOutput = await xslt.xsltProcess(xmlDoc, xsltDoc);
-        const htmlString = htmlOutput.toString();        
-        res.set('Content-Type', 'text/html');
-        res.send(htmlString);
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).send(`Transformation failed: ${error.message}`);
-    }
-});
-
-app.get('/htmlS2', async (req, res) => {//Semester 1
-    try {
-        const xmlPath = path.join(path.join(storageDir, 'schedule_semester2.xml'));
-        const xsltPath = path.join(path.join(storageDir, 'schedule-to-html.xsl'));
+        const { xml, xslt } = req.query;
+        const xmlPath = path.join(path.join(storageDir, xml));
+        const xsltPath = path.join(path.join(storageDir, xslt));
 
         if (!fs.existsSync(xmlPath) || !fs.existsSync(xsltPath)) {
             return res.status(404).send("Required XML/XSLT files missing in 'uploads' folder.");
