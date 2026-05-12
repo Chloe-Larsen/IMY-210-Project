@@ -4,7 +4,7 @@ import { ref , onMounted} from 'vue';
 const xmlFile = ref(null);
 const generalFile = ref(null);
 const message = ref('');
-const isError = ref(false);git 
+const isError = ref(false);
 const isLoading = ref(false);
 const isXsdUploaded = ref(false);
 
