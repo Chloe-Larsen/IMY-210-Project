@@ -62,7 +62,23 @@ const uploadXml = async () => {
 
 const uploadFile = async () => {
   if (!generalFile.value) return;
-  const isXsd = generalFile.value.name.endsWith('.xsd');
+  
+  const fileName = generalFile.value.name.toLowerCase();  
+  if (fileName.endsWith('.xml')) {
+    displayMessage("Error: Please use the designated XML upload section below for XML files.", true);    
+    if (fileInputRef.value) fileInputRef.value.value = '';
+    generalFile.value = null;
+    return;
+  }
+
+  if (!fileName.endsWith('.xsd') && !fileName.endsWith('.xsl') && !fileName.endsWith('.xslt')) {
+    displayMessage("Error: Only .xsd, .xsl, or .xslt files are permitted in this section.", true);
+    if (fileInputRef.value) fileInputRef.value.value = '';
+    generalFile.value = null;
+    return;
+  }
+
+  const isXsd = fileName.endsWith('.xsd');
   const formData = new FormData();
   formData.append('file', generalFile.value);
   await executeUpload('http://localhost:3000/upload/file', formData, isXsd);
@@ -121,7 +137,7 @@ const deleteFile = async (filename) => {
     <h2>Upload Files</h2>
     <div class="upload-section">
         <h3>Upload XSLT/XSD</h3>
-        <input type="file" @change="handleFileChange($event, 'file')" ref="fileInputRef"/>
+        <input type="file" @change="handleFileChange($event, 'file')" accept=".xsd,.xsl,.xslt" ref="fileInputRef"/>
         <button @click="uploadFile" :disabled="isLoading || !generalFile">Upload File</button>
     </div>
 
