@@ -84,7 +84,7 @@ Output from upload:
 
 **_DELETE_ `/files/:name`**
 
-***Description:*** Permanently removes the specified file from the uploads/ directory.
+***Description:*** Permanently removes the specified file from the `uploads/`W directory.
 
 ***URL Parameter:*** `:name` (e.g., schedule.xml).
 
