@@ -162,7 +162,7 @@ const deleteFile = async (filename) => {
 h2 {
   font-weight: bolder;
   text-align: center;  
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 }
 
 .upload-section { 

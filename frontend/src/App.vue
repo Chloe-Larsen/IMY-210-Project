@@ -7,7 +7,7 @@
     <nav>
       <h1>Schedule Transformer</h1>
       <router-link to="/">Upload Files</router-link>
-      <router-link to="/transform">Transform & vue</router-link>
+      <router-link to="/transform">Transform XML</router-link>
     </nav>
     <main>
       <router-view />
@@ -23,6 +23,8 @@ nav {
   position: sticky; 
   top: 0; 
   z-index: 1000;
+  width: 100%;
+  box-sizing: border-box; 
 }
 
 nav h1 {
