@@ -18,8 +18,16 @@
 <style scoped>
 nav { 
   padding: 20px; 
-  background: #f4f4f4; 
+  background: #dedddd; 
   border-bottom: 1px solid #ccc; 
+  position: sticky; 
+  top: 0; 
+  z-index: 1000;
+}
+
+nav h1 {
+  font-weight: bolder;
+  color : #333;
 }
 
 nav a { 
