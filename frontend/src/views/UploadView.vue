@@ -92,9 +92,7 @@ const executeUpload = async (url, formData, isXsd = false) => {
   }
 };
 
-const deleteFile = async (filename) => {  
-  if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
-
+const deleteFile = async (filename) => {    
   isLoading.value = true;
   message.value = '';
   
@@ -123,13 +121,13 @@ const deleteFile = async (filename) => {
     <div class="upload-section">
         <h3>Upload XSLT/XSD</h3>
         <input type="file" @change="handleFileChange($event, 'file')" ref="fileInputRef"/>
-        <button @click="uploadFile" :disabled="isLoading">Upload File</button>
+        <button @click="uploadFile" :disabled="isLoading || !generalFile">Upload File</button>
     </div>
 
     <div class="upload-section" v-if="isXsdUploaded">
         <h3>Upload XML (with XSD validation)</h3>
         <input type="file" @change="handleFileChange($event, 'xml')" accept=".xml" ref="xmlInputRef"/>
-        <button @click="uploadXml" :disabled="isLoading">Upload XML</button>
+        <button @click="uploadXml" :disabled="isLoading|| !xmlFile">Upload XML</button>
     </div>
 
     <div class="upload-section" v-else>
