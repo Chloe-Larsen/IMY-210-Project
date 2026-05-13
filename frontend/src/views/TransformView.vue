@@ -7,6 +7,7 @@ const selectedXml = ref('');
 const selectedXslt = ref('');
 const htmlOutput = ref('');
 const isLoading = ref(false);
+const isPdfLoading = ref(false);
 const errorMsg = ref('');
 
 onMounted(async () => {
@@ -41,6 +42,36 @@ const transformData = async () => {
     isLoading.value = false;
   }
 };
+
+const downloadPdf = async () => {
+  isPdfLoading.value = true;
+  errorMsg.value = '';
+
+  try {    
+    const url = `http://localhost:3000/generate-pdf?xml=${selectedXml.value}&xslt=${selectedXslt.value}`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || "Server error while generating PDF");
+    }
+        
+    const blob = await response.blob();    
+    const downloadUrl = window.URL.createObjectURL(blob);    
+    const link = document.createElement('a');
+    link.href = downloadUrl;      
+    link.download = selectedXml.value.replace('.xml', '.pdf');     
+    document.body.appendChild(link);
+    link.click();    
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(downloadUrl);
+
+  } catch (err) {
+    errorMsg.value = "PDF Generation Error: " + err.message;
+  } finally {
+    isPdfLoading.value = false;
+  }
+};
 </script>
 
 <template>
@@ -60,9 +91,15 @@ const transformData = async () => {
                     <option v-for="file in xsltFiles" :key="file" :value="file">{{ file }}</option>
                 </select>
             </label>
-            <button @click="transformData" :disabled="!selectedXml || !selectedXslt || isLoading">
-                Transform
-            </button>
+            <div class="action-buttons">
+              <button @click="transformData" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading">
+                View HTML
+              </button>
+          
+              <button @click="downloadPdf" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading" class="pdf-btn">
+                {{ isPdfLoading ? 'Generating PDF...' : 'Download PDF' }}
+              </button>
+      </div>
         </div>
         <p v-if="isLoading">Processing transformation...</p>
         <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
@@ -74,5 +111,37 @@ const transformData = async () => {
 </template>
 
 <style scoped>
-
+.controls { 
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-end; 
+  margin-bottom: 20px; 
+  flex-wrap: wrap; 
+}
+.action-buttons { 
+  display: flex; 
+  gap: 10px; 
+}
+.pdf-btn { 
+  background-color: #d32f2f; 
+  color: white; 
+  border: 1px solid #b71c1c; 
+  padding: 6px 12px; 
+  cursor: pointer; 
+  border-radius: 4px; 
+}
+.pdf-btn:disabled { 
+  background-color: #ef9a9a; 
+  border-color: #ef9a9a;
+  cursor: not-allowed; 
+}
+.error { 
+  color: red; 
+}
+.result-frame { 
+  width: 100%; 
+  height: 600px; 
+  border: 1px solid #ccc; 
+  background: white; 
+}
 </style>

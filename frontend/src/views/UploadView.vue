@@ -40,7 +40,7 @@ const uploadFile = async () => {
   await executeUpload('http://localhost:3000/upload/file', formData, isXsd);
 };
 
-const executeUpload = async (url, formData) => {
+const executeUpload = async (url, formData, isXsd = false) => {
   isLoading.value = true;
   message.value = '';
   try {
