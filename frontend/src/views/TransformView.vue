@@ -104,7 +104,7 @@ const downloadPdf = async () => {
                     View HTML
                   </button>
               
-                  <button @click="downloadPdf" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading || !selectedXslt.includes('pdf') " class="pdf-btn">
+                  <button @click="downloadPdf" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading || !(selectedXslt.includes('pdf') || selectedXslt.includes('fo')) " class="pdf-btn">
                     {{ isPdfLoading ? 'Generating PDF...' : 'Download PDF' }}
                   </button>
                 </div>
