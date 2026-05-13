@@ -133,6 +133,7 @@ const deleteFile = async (filename) => {
     </div>
 
     <div class="upload-section" v-else>
+      <h3>Upload XML</h3>
       <p style="color: #666; font-style: italic;">
         Upload your XSD schema file first to unlock XML uploading.
       </p>
@@ -159,7 +160,9 @@ const deleteFile = async (filename) => {
 
 <style scoped>
 h2 {
-  font-weight: bolder;  
+  font-weight: bolder;
+  text-align: center;  
+  margin-bottom: 10px;
 }
 
 .upload-section { 
@@ -268,12 +271,18 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .error { 
-    color: #d32f2f; 
-    font-weight: 500;
+  color: #d32f2f; 
+  font-weight: 500;
+  text-align: center;
 }
+
+.success{
+  text-align: center;
+}
+
 .empty-msg {
-    color: #777;
-    font-style: italic;
-    margin: 0;
+  color: #777;
+  font-style: italic;
+  margin: 0;
 }
 </style>
