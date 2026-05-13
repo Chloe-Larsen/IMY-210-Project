@@ -100,11 +100,11 @@ const downloadPdf = async () => {
                 </label>
                 
                 <div class="action-buttons">
-                  <button @click="transformData" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading" class="view-btn">
+                  <button @click="transformData" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading || !selectedXslt.includes('html') " class="view-btn">
                     View HTML
                   </button>
               
-                  <button @click="downloadPdf" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading" class="pdf-btn">
+                  <button @click="downloadPdf" :disabled="!selectedXml || !selectedXslt || isLoading || isPdfLoading || !selectedXslt.includes('pdf') " class="pdf-btn">
                     {{ isPdfLoading ? 'Generating PDF...' : 'Download PDF' }}
                   </button>
                 </div>
