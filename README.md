@@ -22,7 +22,7 @@ To run this server locally, ensure you have the following installed:
 - Extract the `project_u25004141.zip` file.
 - Open a terminal in the root directory of the project.
 - Install the required Node.js dependencies:
-    - `npm install @xmldom/xmldom cors express libxmljs2 multer xml-js xslt-processor`
+    - `npm install`
 - Ensure the fopPath variable is updated to match your local FOP path to where your FOP.bat is stored
     - If FOP is not installed download the ZIP file at `https://xmlgraphics.apache.org/fop/download.html`
 - Start the server
@@ -34,7 +34,7 @@ To run this server locally, ensure you have the following installed:
 ## Instructions to run Vue frontend
 - Navigate to the frontend directory in a new terminal window.
 - Install the required dependencies:
-    - `npm install vue vue-router vite @vitejs/plugin-vue vite-plugin-vue-devtools`
+    - `npm install`
 - Start the development server:
     - `npm run dev`
 - Access the interface at the URL provided in the terminal.
@@ -84,7 +84,7 @@ Output from upload:
 
 **_DELETE_ `/files/:name`**
 
-***Description:*** Overwrites an existing file in the `uploads/` directory with a new version.
+***Description:*** Permanently removes the specified file from the uploads/ directory.
 
 ***URL Parameter:*** `:name` (e.g., schedule.xml).
 
